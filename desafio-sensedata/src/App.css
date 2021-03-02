@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container-body {
+  width: 70%;
+  margin: auto;
+  margin-top: 20px;
+  text-align: center;
+  border: 5px solid gray;
+  border-radius: 10px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.main-title {
+  background-color: greenyellow;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.nav-bar {
+  margin-top: 20px;
+  background-color: whitesmoke;
+}
+
+.nav-bar button{
+  width: 140px;
+  margin: 0 10px;
+}
+
+.nav-bar button i{
+  margin-right: 10px;
+}
+
+.nav-bar button:hover {
+  background-color: blue;
+}
