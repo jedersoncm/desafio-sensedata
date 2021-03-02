@@ -6,16 +6,16 @@ import ContextActivities from '../context/ContextActivities';
 
 function Todo() {
   const {
-    activities,
-    setActivities,
+    handleClickSend
   } = useContext(ContextActivities);
 
-  const handleClick = async() => {
-    const activity = document.querySelector("#input-activity").value;
-    await setActivities([...activities , activity]);
+  // const handleClick = async() => {
+  //   const activity = document.querySelector("#input-activity").value;
+  //   await setActivities([...activities , activity]);
+  //   localStorage.setItem('activities', JSON.stringify(activities));
    
-    // console.log(activities);
-  }
+  //   // console.log(activities);
+  // }
 
   
 
@@ -26,7 +26,7 @@ function Todo() {
       <h1>To Do</h1>
       <form className="input-container">
         <input placeholder="Digite a atividade" id="input-activity" className="form-control"></input>
-        <button type='button' onClick={ handleClick } className="btn btn-secondary">
+        <button type='button' onClick={ handleClickSend } className="btn btn-secondary">
           <i class="fas fa-arrow-circle-right"></i>
         </button>
       </form>

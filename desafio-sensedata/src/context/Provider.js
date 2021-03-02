@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import ContextActivities from './ContextActivities';
 
 function Provider({ children }) {
@@ -7,56 +7,51 @@ function Provider({ children }) {
   const [inProgress, setInProgress] = useState([]);
   const [done, setDone] = useState([]);
 
-  const location = useLocation().pathname;
+  const handleClickSend = async() => {
+    const activity = document.querySelector("#input-activity").value;
+    await setActivities([...activities , activity]);
+    localStorage.setItem('activities', JSON.stringify([...activities , activity]));
+  }
 
-  const handleClickDoing = async ({target}) => {
+  const handleClickDoing = ({ target }) => {
     const activityDone = target.value;
-    console.log(activityDone);
     const index = activities.indexOf(activityDone);
     const updateActivities = activities;
+
     updateActivities.splice(index, 1);
-    await setInProgress([...inProgress, activityDone]);
-    // console.log(inProgress);
-    // console.log(updateActivities);
-    // console.log(activities);
-    await setActivities(updateActivities);
-    // console.log(activityDone, index);
+
+    setInProgress([...inProgress, activityDone]);
+    setActivities(updateActivities);
+    
+    localStorage.setItem('activities', JSON.stringify(updateActivities));
+    localStorage.setItem('inProgress', JSON.stringify([...inProgress, activityDone]));
   }
 
   const handleClickDone = ({target}) => {
     const activityDone = target.value;
     const index = inProgress.indexOf(activityDone);
     const updateInProgress = inProgress;
+
     updateInProgress.splice(index, 1);
+
     setDone([...done, activityDone])
     setInProgress(updateInProgress);
-    console.log("ANTES: " + done);
+
+    localStorage.setItem('inProgress', JSON.stringify(updateInProgress));
+    localStorage.setItem('done', JSON.stringify([...done, activityDone]));
   }
 
   const handleClickDeleteDone = ({target}) => {
     const activityDone = target.value;
     const index = done.indexOf(activityDone);
     const updateDone = done;
+
     updateDone.splice(index, 1);
-    // console.log("ANTES: " + done);
-    // console.log("DEPOIS1 " + updateDone);
-    setDone(updateDone);
-    setInProgress(inProgress);
-    console.log("DEPOIS2:" + done);
+
+    setDone([...updateDone]);
+    localStorage.setItem('done', JSON.stringify(updateDone));
   }
 
-  // const handleClickEdit = ({target}) => {
-  //   const activityDone = target.value;
-  //   const index = inProgress.indexOf(activityDone);
-    
-  //   if (location === '/in-progress') {
-  //     const updateActivities = inProgress;
-  //   } else if (location ==='/done') {
-  //     const updateActivities = done;
-  //   } else {
-  //     const updateActivities = activities;
-  //   }
-  // }
 
   const contextValue = {
     activities,
@@ -68,6 +63,7 @@ function Provider({ children }) {
     handleClickDoing,
     handleClickDone,
     handleClickDeleteDone,
+    handleClickSend,
   }
 
   return(

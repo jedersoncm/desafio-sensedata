@@ -1,15 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ContextActivities from '../context/ContextActivities';
 
 function DoneList() {
-  const { done, handleClickDeleteDone } = useContext(ContextActivities);
+  const { done, handleClickDeleteDone, setDone } = useContext(ContextActivities);
+  const doneStorage = JSON.parse(localStorage.getItem('done'));
+
+  useEffect(() => {
+    if (doneStorage) {
+      setDone(doneStorage);
+    }
+  },[])
 
   return(
-    <ul>
+    <ul className="list-container">
         {done.length > 0 && done.map((activity, index) => (
-          <li key={index}>
+          <li className="item-list" key={index}>
             { activity }
-            {/* <button value={ activity } onClick={ handleClickDeleteDone }>Deletar</button> */}
+            <button value={ activity } onClick={ handleClickDeleteDone } className="btn btn-light">Deletar</button>
           </li>
         )) }
       </ul>

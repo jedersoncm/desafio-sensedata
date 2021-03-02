@@ -1,17 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ContextActivities from '../context/ContextActivities';
 
 function InProgressList() {
-  const { inProgress, handleClickDone } = useContext(ContextActivities);
-  // console.log(inProgress);
+  const { inProgress, handleClickDone, setInProgress } = useContext(ContextActivities);
+  const inProgressStorage = JSON.parse(localStorage.getItem('inProgress'));
+
+  useEffect(() => {
+    if (inProgressStorage) {
+      setInProgress(inProgressStorage);
+    }
+  },[])
 
   return(
-    <ul>
+    <ul className="list-container">
         {inProgress.length > 0 && inProgress.map((activity, index) => (
-          <li key={index}>
+          <li className="item-list" key={index}>
             { activity }
-            <button value={ activity }>Cancelar</button>
-            <button value={ activity } onClick={ handleClickDone }>Feito</button>
+            {/* <button value={ activity }>Cancelar</button> */}
+            <button value={ activity } onClick={ handleClickDone } className="btn btn-light">Feito</button>
           </li>
         )) }
       </ul>
