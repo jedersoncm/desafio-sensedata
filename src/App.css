@@ -21,13 +21,15 @@ li {
 }
 
 .main-title {
-  background-color: greenyellow;
+  background-color: #007bb6;
+  color: whitesmoke;
+  font-weight: bold;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .nav-bar {
   margin-top: 20px;
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
 }
 
 .nav-bar button{
@@ -67,8 +69,11 @@ li {
   display: flex;
   justify-content: space-between;
   max-width: 100%;
+  padding-left: 10px;
   /* border: 1px grey solid; */
   margin-bottom: 5px;
   font-size: 1.5em;
+  background-color: whitesmoke;
+  border-radius: 10px;
   
 }
