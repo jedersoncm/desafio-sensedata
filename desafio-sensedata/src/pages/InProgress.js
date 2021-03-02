@@ -10,8 +10,6 @@ function InProgress() {
       <Header />
       <NavBar />
       <h1>In Progress</h1>
-      {/* <input placeholder="Digite a atividade" id="input-activity"></input>
-      <button type='button' onClick={ handleClick }>Enviar</button> */}
       <InProgressList />
     </div>
   )

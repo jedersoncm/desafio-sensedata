@@ -9,16 +9,17 @@ function Provider({ children }) {
 
   const location = useLocation().pathname;
 
-  const handleClickDoing = ({target}) => {
+  const handleClickDoing = async ({target}) => {
     const activityDone = target.value;
+    console.log(activityDone);
     const index = activities.indexOf(activityDone);
     const updateActivities = activities;
     updateActivities.splice(index, 1);
-    setInProgress([...inProgress, activityDone]);
+    await setInProgress([...inProgress, activityDone]);
     // console.log(inProgress);
     // console.log(updateActivities);
     // console.log(activities);
-    setActivities(updateActivities);
+    await setActivities(updateActivities);
     // console.log(activityDone, index);
   }
 

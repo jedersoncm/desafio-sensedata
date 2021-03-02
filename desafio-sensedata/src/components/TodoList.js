@@ -5,14 +5,20 @@ function TodoList() {
   const { activities, handleClickDoing } = useContext(ContextActivities);
 
   return(
-    <ul>
+    <ul className="list-container">
         {activities.length > 0 && activities.map((activity, index) => (
-          <li key={index}>
+          <li key={index} className="item-list">
             { activity }
-            <button onClick={ handleClickDoing } value={ activity }>Iniciar</button>
+            <button
+              onClick={ handleClickDoing }
+              value={ activity }
+              className="btn btn-light"
+            >
+              <i class="fas fa-play-circle"></i>
+            </button>
           </li>
         )) }
-      </ul>
+    </ul>
   );
 }
 

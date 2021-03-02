@@ -14,7 +14,7 @@ function Todo() {
     const activity = document.querySelector("#input-activity").value;
     await setActivities([...activities , activity]);
    
-    console.log(activities);
+    // console.log(activities);
   }
 
   
@@ -24,8 +24,12 @@ function Todo() {
       <Header />
       <NavBar />
       <h1>To Do</h1>
-      <input placeholder="Digite a atividade" id="input-activity"></input>
-      <button type='button' onClick={ handleClick }>Enviar</button>
+      <form className="input-container">
+        <input placeholder="Digite a atividade" id="input-activity" className="form-control"></input>
+        <button type='button' onClick={ handleClick } className="btn btn-secondary">
+          <i class="fas fa-arrow-circle-right"></i>
+        </button>
+      </form>
       <TodoList />
     </div>
   )
