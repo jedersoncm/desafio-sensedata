@@ -41,6 +41,17 @@ function Provider({ children }) {
     localStorage.setItem('done', JSON.stringify([...done, activityDone]));
   }
 
+  const handleClickDeleteActivities = ({target}) => {
+    const activityDelete = target.value;
+    const index = inProgress.indexOf(activityDelete);
+    const updateActivities = activities;
+
+    updateActivities.splice(index, 1);
+
+    setActivities([...updateActivities]);
+    localStorage.setItem('activities', JSON.stringify(updateActivities));
+  }
+
   const handleClickDeleteDone = ({target}) => {
     const activityDone = target.value;
     const index = done.indexOf(activityDone);
@@ -50,6 +61,17 @@ function Provider({ children }) {
 
     setDone([...updateDone]);
     localStorage.setItem('done', JSON.stringify(updateDone));
+  }
+
+  const handleClickDeleteInProgress = ({target}) => {
+    const inProgressDelete = target.value;
+    const index = inProgress.indexOf(inProgressDelete);
+    const updateInProgress = inProgress;
+
+    updateInProgress.splice(index, 1);
+
+    setInProgress([...updateInProgress]);
+    localStorage.setItem('inProgress', JSON.stringify(updateInProgress));
   }
 
 
@@ -64,6 +86,8 @@ function Provider({ children }) {
     handleClickDone,
     handleClickDeleteDone,
     handleClickSend,
+    handleClickDeleteInProgress,
+    handleClickDeleteActivities
   }
 
   return(

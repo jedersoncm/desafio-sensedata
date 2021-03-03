@@ -9,7 +9,10 @@ function Done() {
     <div className="container-body">
       <Header />
       <NavBar />
-      <h1>Done</h1>
+      <h2>
+        <i class="far fa-check-square"></i>
+        {" Done"}
+      </h2>
       <DoneList />
     </div>
   )

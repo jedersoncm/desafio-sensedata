@@ -16,7 +16,7 @@ function DoneList() {
         {done.length > 0 && done.map((activity, index) => (
           <li className="item-list" key={index}>
             { activity }
-            <button value={ activity } onClick={ handleClickDeleteDone } className="btn btn-light">Deletar</button>
+            <button value={ activity } onClick={ handleClickDeleteDone } className="btn btn-light">Delete</button>
           </li>
         )) }
       </ul>

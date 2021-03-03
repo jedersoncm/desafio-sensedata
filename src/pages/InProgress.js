@@ -9,7 +9,10 @@ function InProgress() {
     <div className="container-body">
       <Header />
       <NavBar />
-      <h1>In Progress</h1>
+      <h2>
+        <i class="fas fa-hourglass-half"></i>
+        {" In Progress"}
+      </h2>
       <InProgressList />
     </div>
   )
